@@ -1,0 +1,37 @@
+<html>
+<body>
+
+<div>Добавление клиента:</div>
+
+<div>
+    <form method="post">
+        <input type="text" name="name" placeholder="Имя"/>
+        <input type="text" name="birthYear" placeholder="Год рождения"/>
+        <input type="text" name="carModel" placeholder="Модель авто"/>
+        <input type="text" name="modYear" placeholder="Год выпуска"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>Удаление клиента:</div>
+
+<div>
+    <form method="post" action="delete">
+        <input type="text" name="name" placeholder="Имя"/>
+        <input type="text" name="carModel" placeholder="Модель авто"/>
+        <button type="submit">Удалить</button>
+    </form>
+</div>
+
+<br><div>ЖУРНАЛ КЛИЕНТОВ:</div><br>
+{{#clients}}
+<div>
+    <b>{{id}}</b>
+    <span>{{name}}</span>,
+    <span>{{year}}</span> :
+    <i>{{auto}}</i>
+</div>
+{{/clients}}
+
+</body>
+</html>
