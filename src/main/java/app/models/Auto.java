@@ -1,5 +1,6 @@
 package app.models;
 
+import com.sun.deploy.security.ValidationState;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +18,7 @@ public class Auto {
     private String model;
     private String year;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     @JoinColumn(name = "user_id")
     private Client client;
 

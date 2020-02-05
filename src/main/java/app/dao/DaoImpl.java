@@ -8,16 +8,18 @@ import app.models.Client;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class DaoImpl implements Dao {
     public void createClient(Client client) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction1 = session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
 
         session.save(client);
-        transaction1.commit();
+        transaction.commit();
         session.close();
     }
 
@@ -39,10 +41,10 @@ public class DaoImpl implements Dao {
 
     public void updateClient(Client client) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction3 = session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
 
         session.update(client);
-        transaction3.commit();
+        transaction.commit();
         session.close();
     }
 
@@ -60,6 +62,42 @@ public class DaoImpl implements Dao {
 
         session.close();
         return client;
+    }
+
+
+    public void createAuto(Auto auto) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(auto);
+        transaction.commit();
+        session.close();
+    }
+
+    public void updateAuto(Auto auto) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(auto);
+        transaction.commit();
+        session.close();
+    }
+
+    public void deleteAuto(Auto auto) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.delete(auto);
+        transaction.commit();
+        session.close();
+    }
+
+    public List<Auto> getAllAutos() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List<Auto> autos = session.createQuery("From Auto").list();
+        session.close();
+
+        return autos;
     }
 
     public Auto findAutoByModel(String carModel) {

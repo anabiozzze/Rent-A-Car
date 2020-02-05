@@ -19,8 +19,6 @@ public class Client {
     private String name;
     private String year;
 
-    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Auto auto;
 
     public Client(String name, String year) {
         this.name = name;
@@ -43,10 +41,5 @@ public class Client {
         this.year = year;
     }
 
-    public Auto getAutos() { return auto; }
-
-    public void setAuto(Auto auto) {
-        this.auto = auto;
-    }
 
 }
